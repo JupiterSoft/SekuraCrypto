@@ -14,8 +14,6 @@ find_package(libsecp256k1)
 
 add_library(
   Crypto STATIC
-  crypto.cpp
-  crypto.h
   qaesencryption.cpp
   qaesencryption.h
   instr.h
