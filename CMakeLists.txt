@@ -11,7 +11,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(libsecp256k1)
-# find_package(Boost REQUIRED)
+find_package(Boost REQUIRED)
+
+include_directories(${Boost_INCLUDE_DIRS})
 
 add_library(
   Crypto STATIC
@@ -33,6 +35,6 @@ add_library(
   secp256k1s.cpp)
 
 target_link_libraries(Crypto PRIVATE Qt${QT_VERSION_MAJOR}::Core
-                                     libsecp256k1::secp256k1)
+                                     libsecp256k1::secp256k1 ${Boost_LIBRARIES})
 
 target_compile_definitions(Crypto PRIVATE CRYPTO_LIBRARY)
