@@ -38,3 +38,7 @@ target_link_libraries(Crypto PRIVATE Qt${QT_VERSION_MAJOR}::Core
                                      libsecp256k1::secp256k1 ${Boost_LIBRARIES})
 
 target_compile_definitions(Crypto PRIVATE CRYPTO_LIBRARY)
+
+if(BUILD_TESTS)
+  add_subdirectory(Tests)
+endif()
